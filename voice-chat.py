@@ -1,3 +1,15 @@
+from math import inf
+
+import discord
+from discord.ext import commands
+import logging
+#from dotenv import load_dotenv
+import os
+import time
+import asyncio
+from discord.ui import View, Button
+import re
+from collections import defaultdict
 from discord import FFmpegPCMAudio
 
 @commands.command()
