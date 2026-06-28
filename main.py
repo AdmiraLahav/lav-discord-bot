@@ -35,8 +35,6 @@ import asyncio
 #import re
 #from collections import defaultdict
 
-from discord import FFmpegPCMAudio
-
 RESET = "\x1b[0m";
 green_color = "\x1b[38;5;40m";
 blue_color = "\x1b[38;5;12m";
@@ -76,16 +74,6 @@ async def on_message(message):
         await message.channel.send(f"{message.author.mention} said 'nigga' and I deleted it")
     '''
     await bot.process_commands(message) # --- important
-
-@commands.command()
-async def join(ctx):
-    if (ctx.author.voice):
-        channel = ctx.message.author.voice.channel
-        voice = await channel.connect()
-        source = FFmpegPCMAudio("Beginning In The End.mp3")
-
-        print("Playing song")
-        player = voice.play(source)
 
 async def main():
     async with bot:
