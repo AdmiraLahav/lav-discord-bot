@@ -35,6 +35,8 @@ import asyncio
 #import re
 #from collections import defaultdict
 
+from discord import FFmpegAudio, FFmpegPCMAudio
+
 RESET = "\x1b[0m";
 green_color = "\x1b[38;5;40m";
 blue_color = "\x1b[38;5;12m";
@@ -75,9 +77,19 @@ async def on_message(message):
     '''
     await bot.process_commands(message) # --- important
 
+@commands.command()
+async def join(ctx):
+    if (ctx.author.voice):
+        channel = ctx.message.author.voice.channel
+        voice = await channel.connect()
+        source = FFmpegPCMAudio("Beginning In The End.mp3")
+
+        player = voice.play(source)
+
 async def main():
     async with bot:
         await bot.load_extension("commands")
+        await bot.load_extension("voice-chat")
         await bot.start(token)
 
 asyncio.run(main())
