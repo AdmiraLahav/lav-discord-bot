@@ -35,7 +35,7 @@ import asyncio
 #import re
 #from collections import defaultdict
 
-from discord import FFmpegAudio, FFmpegPCMAudio
+from discord import FFmpegPCMAudio
 
 RESET = "\x1b[0m";
 green_color = "\x1b[38;5;40m";
@@ -84,6 +84,7 @@ async def join(ctx):
         voice = await channel.connect()
         source = FFmpegPCMAudio("Beginning In The End.mp3")
 
+        print("Playing song")
         player = voice.play(source)
 
 async def main():
